@@ -33,10 +33,12 @@ set<string> Movie::keywords() const
 {
 
     //1. get set of keywords from title
-    set<string> keywordsAll = parseStringToWords(name_);
+    set<string> keywordsName = parseStringToWords(name_);
 
     //2. add genre to set
-    keywordsAll.insert(convToLower(genre_));
+    set<string> keywordsGenre = parseStringToWords(genre_);
+
+    set<string> keywordsAll = setUnion(keywordsName,keywordsGenre);
     
     return keywordsAll;
 }

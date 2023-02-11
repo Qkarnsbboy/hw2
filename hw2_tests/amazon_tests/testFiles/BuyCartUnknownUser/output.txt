@@ -11,6 +11,6 @@ Menu:
 ====================================
 
 Enter command: 
-Invalid request
+Invalid username
 
 Enter command: 

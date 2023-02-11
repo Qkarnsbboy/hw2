@@ -29,10 +29,12 @@ Genre: Drama Rating: PG
 Enter command: 
 
 Enter command: 
-1. Hidden Figures DVD
+Item 1
+Hidden Figures DVD
 Genre: Drama Rating: PG
 17.99 1 left.
-2. Hidden Figures DVD
+Item 2
+Hidden Figures DVD
 Genre: Drama Rating: PG
 17.99 1 left.
 

@@ -34,10 +34,12 @@ std::set<std::string> Clothing::keywords() const
 {
 
     //1. get set of keywords from title
-    set<string> keywordsAll = parseStringToWords(name_);
+    set<string> keywordsName = parseStringToWords(name_);
 
     //2. add brand to set
-    keywordsAll.insert(convToLower(brand_));
+    set<string> keywordsBrand = parseStringToWords(brand_);
+
+    set<string> keywordsAll = setUnion(keywordsName, keywordsBrand);
     
     return keywordsAll;
 }

@@ -18,6 +18,6 @@ Author: Tommy Trojan ISBN: 978-000000000-1
 
 
 Enter command: 
-Invalid Request
+Invalid request
 
 Enter command: 

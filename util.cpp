@@ -15,71 +15,74 @@ std::string convToLower(std::string src)
     to a set of words based on the criteria given in the assignment **/
 std::set<std::string> parseStringToWords(string rawWords)
 {
-    std::set<std::string> temp;
 
-    for(unsigned int i = 0; i < rawWords.length(); i++){
-        if(ispunct(rawWords[i])){
-            rawWords[i] = ' ';
-        }
-    }
-    istringstream ss(rawWords);
-    string word;
-    string temp_word;
-    while(ss >> word){
+    // //2 --> parsestringtowords
+    // std::set<std::string> temp;
 
-        if(word.length() > 1){
-            trim(word);
-            temp.insert(word);
-            temp.insert(convToLower(word));
-        }
-    }
-
-    return temp;
-
-
-    // rawWords = convToLower(rawWords);
-    // //Criteria
-    // //1. split at punctuation
-    // //2. >= 2 character words
-
-    // //create set
-    // std::set<std::string> keywords;
-    
-    // stringstream ss(rawWords);
+    // for(unsigned int i = 0; i < rawWords.length(); i++){
+    //     if(ispunct(rawWords[i])){
+    //         rawWords[i] = ' ';
+    //     }
+    // }
+    // istringstream ss(rawWords);
     // string word;
-    // string temp;
-
+    // string temp_word;
     // while(ss >> word){
-    //     //iterate through word to check for punctuation --> if so trim
-    //     for(unsigned int i = 0; i < word.length(); i++)
-    //     {
-    //         //if punctuation add left side
-    //         if(ispunct(word[i]))
-    //         {
-    //             //add only if two characters or greater
-    //             if(temp.length() > 1){
-    //                 keywords.insert(temp);
-    //                 temp.clear();
-    //             }
-    //         }
-    //         else {
-    //             //update current word
-    //             temp += tolower(word[i]);                
-    //         }
-    //     }
-    //     //add after punctuation is checked
-    //     if(temp.length() > 1)
-    //     {
-    //         keywords.insert(temp);
-    //         temp.clear();
-    //     }
-    //     else{
-    //         temp.clear();
-    //     }
 
+    //     if(word.length() > 1){
+    //         trim(word);
+    //         temp.insert(word);
+    //         temp.insert(convToLower(word));
+    //     }
     // }
 
-    // return keywords;
+    // return temp;
+
+    //-------------------------//
+
+    rawWords = convToLower(rawWords);
+    //Criteria
+    //1. split at punctuation
+    //2. >= 2 character words
+
+    //create set
+    std::set<std::string> keywords;
+    
+    stringstream ss(rawWords);
+    string word;
+    string temp;
+
+    while(ss >> word){
+        //iterate through word to check for punctuation --> if so trim
+        for(unsigned int i = 0; i < word.length(); i++)
+        {
+            //if punctuation add left side
+            if(ispunct(word[i]))
+            {
+                //add only if two characters or greater
+                if(temp.length() > 1){
+                    keywords.insert(temp);
+                    temp.clear();
+                }
+            }
+            else {
+                //update current word
+                temp += tolower(word[i]);                
+            }
+        }
+        //add after punctuation is checked
+        if(temp.length() > 1)
+        {
+            keywords.insert(temp);
+            temp.clear();
+        }
+        else{
+            temp.clear();
+        }
+
+    }
+
+    return keywords;
 }
 
 /**************************************************

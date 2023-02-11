@@ -29,10 +29,12 @@ Author: Tommy Trojan ISBN: 978-000000000-1
 Enter command: 
 
 Enter command: 
-1. Hidden Figures DVD
+Item 1
+Hidden Figures DVD
 Genre: Drama Rating: PG
 17.99 1 left.
-2. Great Men and Women of Troy
+Item 2
+Great Men and Women of Troy
 Author: Tommy Trojan ISBN: 978-000000000-1
 19.50 5 left.
 

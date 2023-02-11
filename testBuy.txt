@@ -20,15 +20,9 @@ J. Crew
 movie
 Hidden Figures DVD
 17.99
-0
+4
 Drama
 PG
-movie
-Great Heights
-22.49
-5
-and
-PG-13
 </products>
 <users>
 rafsilva 82.01 0

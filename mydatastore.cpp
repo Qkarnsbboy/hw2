@@ -67,6 +67,13 @@ void MyDataStore::addUser(User* u) {
 //ADDCART
 void MyDataStore::addToCart(string username, Product* p)
 {
+    //exit if no user
+    if(userMap_.find(username) == userMap_.end())
+    {
+        cout << "Invalid request" << endl;
+        return;
+    }
+
      //1. find username
     if(userMap_.find(username) != userMap_.end())
     {
@@ -74,7 +81,7 @@ void MyDataStore::addToCart(string username, Product* p)
         cartMap_.find(username)->second.push_back(p);
     }
     else{ //cant find username
-        cout << "Invalid Request" << endl;
+        cout << "Invalid username" << endl;
         return;
     }
 
@@ -82,6 +89,14 @@ void MyDataStore::addToCart(string username, Product* p)
 
 //BUYCART
 void MyDataStore::buyCart(string username){
+
+    //exit if no user
+    if(userMap_.find(username) == userMap_.end())
+    {
+        cout << "Invalid username" << endl;
+        return;
+    }
+
     //1. find userPointer
     User* u = getUserPointer(username);
 
@@ -91,18 +106,22 @@ void MyDataStore::buyCart(string username){
         //2. iterate through cart
         for(unsigned int i = 0; i < cartMap_.find(username)->second.size(); i++)
         {
-            //if item in stock && user has enough money
-            if( (cartMap_.find(username)->second[i]->getQty() > 1)
-                && (u->getBalance() > cartMap_.find(username)->second[i]->getPrice()))
+            //if item in stock
+            if(cartMap_.find(username)->second[i]->getQty() > 0)
             {
-                //qty reduced by 1
-                cartMap_.find(username)->second[i]->subtractQty(1);
+                //&& user has enough money
+                if(u->getBalance() > cartMap_.find(username)->second[i]->getPrice())
+                {
+                    //product price debited from user
+                    u->deductAmount(cartMap_.find(username)->second[i]->getPrice());
 
-                //product price debited from user
-                u->deductAmount(cartMap_.find(username)->second[i]->getPrice());
-
-                //remove from cart
-                cartMap_.find(username)->second.erase(cartMap_.find(username)->second.begin()+i);
+                    //qty reduced by 1
+                    cartMap_.find(username)->second[i]->subtractQty(1);
+                }
+                else{
+                    //remove from cart
+                    cartMap_.find(username)->second.erase(cartMap_.find(username)->second.begin()+i);
+                } 
             }
             
         }
@@ -117,19 +136,27 @@ void MyDataStore::buyCart(string username){
 //VIEWCART
 void MyDataStore::viewCart(string username) {
 
+    //exit if no user
+    if(userMap_.find(username) == userMap_.end())
+    {
+        cout << "Invalid username" << endl;
+        return;
+    }
+
     //1. find users cart
     if(cartMap_.find(username) != cartMap_.end())
     {
         //3. iterate through cart
         for(unsigned int i = 0; i < cartMap_.find(username)->second.size(); i++)
         {
-            cout << (i+1) << ". "<< cartMap_.find(username)->second[i]->displayString() << endl;
+            cout << "Item " << (i+1) << endl;
+            cout << cartMap_.find(username)->second[i]->displayString() << endl;
         }
     }
     //couldnt find user
     else
     {
-        cout << "Invalid Request" << endl;
+        cout << "Invalid username" << endl;
         return;
     }
 }
@@ -141,7 +168,7 @@ User* MyDataStore::getUserPointer(string username)
     for(map<string,User*>::iterator it = userMap_.begin(); it != userMap_.end(); ++it)
     {
         //2. find username
-        if(userMap_.find(username) != userMap_.end())
+        if(it->first == username)
         {
             return it->second;
         }

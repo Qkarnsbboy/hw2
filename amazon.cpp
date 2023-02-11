@@ -114,6 +114,9 @@ int main(int argc, char* argv[])
                         {
                             ds.addToCart(username, hits[product-1]);
                         }
+                        else{
+                            cout << "Invalid request" << endl;
+                        }
                     }
                 }
                 

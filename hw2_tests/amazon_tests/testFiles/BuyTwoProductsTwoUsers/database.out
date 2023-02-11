@@ -2,7 +2,7 @@
 book
 Data Abstraction & Problem Solving with C++
 79.99
-20
+19
 978-013292372-9
 Carrano and Henry
 book
@@ -20,7 +20,7 @@ J. Crew
 movie
 Hidden Figures DVD
 17.99
-5
+4
 Drama
 PG
 movie
@@ -31,7 +31,7 @@ and
 PG-13
 </products>
 <users>
-rafsilva 61 0
-redekopp 50 1
+rafsilva 0.51 0
+redekopp 12.51 1
 saty 120 1
 </users>
