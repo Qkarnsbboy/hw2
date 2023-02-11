@@ -21,6 +21,7 @@ void displayProducts(vector<Product*>& hits);
 
 int main(int argc, char* argv[])
 {
+    //test --> to have final commit on codio
     if(argc < 2) {
         cerr << "Please specify a database file" << endl;
         return 1;
